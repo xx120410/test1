@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#login').click(function () {
+                var username = document.getElementById("username").value;
+                var password = $("#password").val();
+                console.log(username);
+                console.log(password)
+                $.ajax({
+                    url:'/helloController/ceShi',
+                    type:'post',
+                    data:{"username":username,"password":password},
+                    dataType:'json',
+                    success:function (res) {
+                        alert(JSON.stringify(res))
+                    }
+                })
+            })
+        })
+
+        function change(){
+            var username = document.getElementById("username").value;
+            var password = $("#password").val();
+            console.log(username);
+            console.log(password)
+            $.ajax({
+                url:'/helloController/ceShi',
+                type:'post',
+                data:{"username":username,"password":password},
+                dataType:'json',
+                success:function (res) {
+                    alert(JSON.stringify(res))
+                }
+            })
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        账号：<input type="text" id="username" class="username" value=""><br>
+        密码：<input type="password" id="password" class="password" value="">
+    </div>
+    <button id="login">登录</button>
+    <div onclick="change()">登录2</div>
+
+</body>
+</html>
